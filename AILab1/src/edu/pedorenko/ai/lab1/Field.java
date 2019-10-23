@@ -52,4 +52,11 @@ public class Field {
             fields[x][y] = "X";
         }
     }
+
+    public long getRubbishAmount() {
+        return Arrays.stream(fields)
+                .flatMap(Arrays::stream)
+                .filter(field -> field.equals("X"))
+                .count();
+    }
 }
