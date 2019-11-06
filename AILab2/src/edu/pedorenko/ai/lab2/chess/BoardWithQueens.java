@@ -24,9 +24,13 @@ public class BoardWithQueens {
     public BoardWithQueens() {
     }
 
+    public BoardWithQueens(int[][] board) {
+        this.board = board;
+    }
+
     public void setQueensRandomly() {
 
-        int queensCountDown = 8;
+        int queensCountDown = BOARD_SIDE_SIZE;
         do {
             int i = random.nextInt(BOARD_SIDE_SIZE);
             int j = random.nextInt(BOARD_SIDE_SIZE);
@@ -121,7 +125,7 @@ public class BoardWithQueens {
         }
         for (int k = 1; k < BOARD_SIDE_SIZE; ++k) {
             int queensOnOtherDiagonal = 0;
-            for (int i = BOARD_SIDE_SIZE; i >= k; --i) {
+            for (int i = BOARD_SIDE_SIZE - 1; i >= k; --i) {
                 int j = k + BOARD_SIDE_SIZE - i - 1;
                 if (isQueen(i, j)) {
                     queensOnOtherDiagonal++;
@@ -133,9 +137,17 @@ public class BoardWithQueens {
         return pairsAmount;
     }
 
+    public BoardWithQueens clone() {
+        int[][] boardClone = new int[BOARD_SIDE_SIZE][BOARD_SIDE_SIZE];
+        for (int i = 0; i < BOARD_SIDE_SIZE; ++i) {
+            System.arraycopy(board[i], 0, boardClone[i], 0, BOARD_SIDE_SIZE);
+        }
+        return new BoardWithQueens(boardClone);
+    }
+
     public String toString() {
-        return "BoardWithQueens{" +
-                "board=" + Arrays.toString(board) +
-                '}';
+        StringBuffer stringBuffer = new StringBuffer();
+        Arrays.stream(board).forEach(row -> stringBuffer.append(Arrays.toString(row)).append("\n"));
+        return stringBuffer.toString();
     }
 }
