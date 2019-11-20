@@ -2,14 +2,14 @@ package edu.pedorenko.ai.lab2.alg_inf;
 
 import edu.pedorenko.ai.lab2.chess.BoardWithQueens;
 
-public class SearchResponce {
+public class SearchResponse {
 
     private BoardWithQueens resultedBoard;
 
     private int generatedStates;
 
 
-    public SearchResponce(BoardWithQueens resultedBoard, int generatedStates) {
+    public SearchResponse(BoardWithQueens resultedBoard, int generatedStates) {
         this.resultedBoard = resultedBoard;
         this.generatedStates = generatedStates;
     }

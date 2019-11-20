@@ -30,7 +30,7 @@ public class App {
         for (int i = 0; i < 20; ++i) {
             boardWithQueens = new BoardWithQueens();
             boardWithQueens.setQueensRandomly();
-            SearchResponce response = Astar(boardWithQueens);
+            SearchResponse response = Astar(boardWithQueens);
             allGeneratedStates += response.getGeneratedStates();
         }
         long end = System.currentTimeMillis();
@@ -38,7 +38,7 @@ public class App {
         System.out.println("Average states: " + (allGeneratedStates / 20d));
     }
 
-    private static SearchResponce Astar(BoardWithQueens boardWithQueens) {
+    private static SearchResponse Astar(BoardWithQueens boardWithQueens) {
 
         int generatedStates = 0;
 
@@ -68,6 +68,6 @@ public class App {
             F2 = currentBoard.F2();
         }
 
-        return new SearchResponce(currentBoard, generatedStates);
+        return new SearchResponse(currentBoard, generatedStates);
     }
 }
